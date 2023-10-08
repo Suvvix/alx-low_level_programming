@@ -1,10 +1,9 @@
 #include <stdio.h>
 
-
 /**
  * main - entry point
  *
- * description: printing digits.
+ * description: print 0-9 using putchar.
  *
  * Return: 0 (success)
 */
@@ -15,7 +14,7 @@ int main(void)
 
 	while (digit <= 9)
 	{
-		printf("%i", digit);
+		putchar(digit + '0');
 		digit++;
 	}
 	printf("\n");
