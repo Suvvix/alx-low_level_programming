@@ -3,7 +3,7 @@
 /**
  * main - entry point
  *
- * description: print 0-9 using putchar.
+ * description: hexadecimal.
  *
  * Return: 0 (success)
 */
