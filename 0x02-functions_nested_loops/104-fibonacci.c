@@ -3,46 +3,48 @@
 /**
  * main - fibonacci
  *
- * Discription: fibonacci
+ * discription: fibonacci
  *
  * Return:  (Success)
  */
 
 int main(void)
 {
-	unsigned long int i;
-	unsigned long int fibo = 1;
-	unsigned long int obif = 2;
-	unsigned long int m = 1000000000;
-	unsigned long int fibo1;
-	unsigned long int fibo2;
-	unsigned long int obif1;
-	unsigned long int obif2;
+	int count;
+	unsigned long fib1 = 0, fib2 = 1, sum;
+	unsigned long fib1_half1, fib1_half2, fib2_half1, fib2_half2;
+	unsigned long half1, half2;
+	unsigned long int b = 10000000000;
 
-	printf("%lu", fibo);
-
-	for (i = 1; i < 91; i++)
+	for (count = 0; count < 92; count++)
 	{
-		printf(", %lu", obif);
-		obif += fibo;
-		fibo = obif - fibo;
+		sum = fib1 + fib2;
+		printf("%lu, ", sum);
+		fib1 = fib2;
+		fib2 = sum;
 	}
+	fib1_half1 = fib1 / b;
+	fib2_half1 = fib2 / b;
+	fib1_half2 = fib1 % b;
+	fib2_half2 = fib2 % b;
 
-	fibo1 = (fibo / m);
-	fibo2 = (fibo % m);
-	obif1 = (obif / m);
-	obif2 = (obif % m);
-
-	for (i = 92; i < 99; ++i)
+	for (count = 93; count < 99; count++)
 	{
-		printf(", %lu", obif1 + (obif2 / m));
-		printf("%lu", obif2 % m);
-		obif1 = obif1 + fibo;
-		fibo1 = obif1 - fibo;
-		obif2 = obif2 + fibo;
-		fibo2 = obif2 - fibo;
+		half1 = fib1_half1 + fib2_half1;
+		half2 = fib1_half2 + fib2_half2;
+		if (fib1_half2 + fib2_half2 > 9999999999)
+		{
+			half1 += 1;
+			half2 %= b;
+		}
+		printf("%lu%lu", half1, half2);
+		if (count != 98)
+			printf(", ");
+				fib1_half1 = fib2_half1;
+				fib1_half2 = fib2_half2;
+				fib2_half1 = half1;
+				fib2_half2 = half2;
 	}
 	printf("\n");
 	return (0);
 }
-
