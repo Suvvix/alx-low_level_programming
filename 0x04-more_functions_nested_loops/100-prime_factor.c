@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - Entry point for the program
@@ -7,26 +8,35 @@
  *
  * Return: Always 0
  */
+
 int main(void)
 {
-	long number = 612852475143;
-	long largestPrimeFactor = 0;
-	long i = 2;
+	long int number;
+	long int largestPrime;
+	long int divisor;
 
-	while (number > 1)
+	number = 612852475143;
+	largestPrime = -1;
+
+	while (number % 2 == 0)
 	{
-		if (number % i == 0)
+		largestPrime = 2;
+		number /= 2;
+	}
+
+	for (divisor = 3; divisor <= sqrt(number); divisor = divisor + 2)
+	{
+		while (number % divisor == 0)
 		{
-			largestPrimeFactor = i;
-			number /= i;
-		}
-		else
-		{
-			i++;
+			largestPrime = divisor;
+			number = number / divisor;
 		}
 	}
 
-	printf("%ld\n", largestPrimeFactor);
+	if (number > 2)
+		largestPrime = number;
 
-	return 0;
+	printf("%ld\n", largestPrime);
+
+	return (0);
 }
