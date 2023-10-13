@@ -7,12 +7,11 @@
  *
  * Return: Always 0
  */
-
 int main(void)
 {
-	long long number = 612852475143;
-	long long largestPrimeFactor = 0;
-	long long i = 2;
+	long number = 612852475143;
+	long largestPrimeFactor = 0;
+	long i = 2;
 
 	while (number > 1)
 	{
@@ -27,8 +26,7 @@ int main(void)
 		}
 	}
 
-	printf("%lld\n", largestPrimeFactor);
+	printf("%ld\n", largestPrimeFactor);
 
-	return (0);
+	return 0;
 }
-
