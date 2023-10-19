@@ -8,21 +8,31 @@
  */
 char *cap_string(char *str)
 {
-	Char *ptr = str;
-	int del = 1;
+	int i = 0;
 
-	while (*str)
+	while (str[i])
 	{
-		if (isDelimiter(*str))
-			del = 1;
-		else if (isLower(*str) && del)
-		{
-			*str -= 32;
-			del = 0;
-		}
-		else
-			del = 0;
-		str++;
+		while (!(str[i] >= 'a' && str[i] <= 'z'))
+			i++;
+
+		if (str[i - 1] == ' ' ||
+		    str[i - 1] == '\t' ||
+		    str[i - 1] == '\n' ||
+		    str[i - 1] == ',' ||
+		    str[i - 1] == ';' ||
+		    str[i - 1] == '.' ||
+		    str[i - 1] == '!' ||
+		    str[i - 1] == '?' ||
+		    str[i - 1] == '"' ||
+		    str[i - 1] == '(' ||
+		    str[i - 1] == ')' ||
+		    str[i - 1] == '{' ||
+		    str[i - 1] == '}' ||
+		    i == 0)
+			str[i] -= 32;
+
+		i++;
 	}
-	return (ptr);
+
+	return (str);
 }
