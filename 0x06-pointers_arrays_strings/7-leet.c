@@ -11,7 +11,7 @@ char *leet(char *n)
 	int value[] = {4, 3, 0, 7, 1};
 	unsigned int i;
 
-	while (*c)
+	while (*n)
 	{
 		for (i = 0; i < sizeof(key) / sizeof(char); i++)
 		{
