@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - print sum of 2 numbers.
