@@ -7,7 +7,7 @@
  * @argv: pointer to array  args
  * Return: Always 0.
 */
-int main(int argc,char *argv[])
+int main(int argc, char *argv[])
 {
 	int sum = 0;
 	char *c;
