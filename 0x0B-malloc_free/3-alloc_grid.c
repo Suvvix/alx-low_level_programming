@@ -8,7 +8,8 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int ** dog, x, y;
+	int **dog, x, y;
+
 	dog = malloc(sizeof(*dog) * height);
 
 	if (width <= 0 || height <= 0 || dog == 0)
@@ -28,7 +29,7 @@ int **alloc_grid(int width, int height)
 				return (NULL);
 			}
 
-			for (y = 0; y <width; y++)
+			for (y = 0; y < width; y++)
 				dog[x][y] = 0;
 		}
 	}
