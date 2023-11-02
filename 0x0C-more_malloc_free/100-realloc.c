@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <stddef.h>
+#include <stdlib.h>
 /**
 * _realloc - Reallocates memory using malloc and free
 *
@@ -7,13 +8,15 @@
 * @old_size: Size in bytes of the old allocated space for ptr
 * @new_size: The new size in bytes of the memory block
 *
-* Return: A pointer to the newly allocated memory, or NULL
+* Return: A pointer to the newly allocated memory of the size, or NULL
 */
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *Magnus;
-	unsigned int Paracelsus_size, Agrippa_size = new_size;
+	unsigned int Paracelsus_size;
 	char *Paracelsus = ptr;
+	unsigned int i;
 
 	if (ptr == NULL)
 	{
@@ -32,7 +35,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	if (new_size > old_size)
 		Paracelsus_size = old_size;
-	for (unsigned int i = 0; i < Paracelsus_size; i++)
+	for (i = 0; i < Paracelsus_size; i++)
 		Magnus[i] = Paracelsus[i];
 	free(ptr);
 	return (Magnus);
