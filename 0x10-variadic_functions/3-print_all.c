@@ -1,83 +1,52 @@
 #include "variadic_functions.h"
 
 /**
- * format_char - formats charachter
- * @separator: the string separator
- * @ap: argument pointer
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
+ *
+ * Description: c: char, i: integer, f: float, s: char * (if the string is
+ * NULL, print (nil) instead, any other char should be ignored
  */
-void format_char(char *separator, va_list ap)
-{
-	printf("%s%c", separator, va_arg(ap, int));
-}
-
-/**
- * format_int - format integer
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_int(char *separator, va_list ap)
-{
-	printf("%s%d", separator, va_arg(ap, int));
-}
-
-/**
- * format_float - format float
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_float(char *separator, va_list ap)
-{
-	printf("%s%d", separator, va_arg(ap, int));
-}
-
-/**
- * format_string - format string
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_string(char *separator, va_list ap)
-{
-	char *str = va_arg(ap, char *);
-
-	switch ((int)(!str))
-	case 1:
-		str = "(nil)";
-
-	printf("%s%s", separator, str);
-}
-
-/**
-* print_all - prints anything
-* @format: list of types of arguments passed to the function
-*/
 void print_all(const char * const format, ...)
 {
-	int i = 0, j;
-	char *separator = "";
-	va_list ap;
-	token_t tokens[] = {
-		{"c", format_char},
-		{"i", format_int},
-		{"f", format_float},
-		{"s", format_string},
-		{NULL, NULL}
-	};
+	va_list args;
+	unsigned int i = 0;
+	char *str;
 
-	va_start(ap, format);
+	va_start(args, format);
+
 	while (format && format[i])
 	{
-		j = 0;
-		while (tokens[j].token)
+		if (i > 0 && (format[i] == 'c' || format[i] == 'i' ||
+			format[i] == 'f' || format[i] == 's'))
+			printf(",\t");
+
+		switch (format[i])
 		{
-			if (format[i] == tokens[j].token[0])
-			{
-				tokens[j].f(separator, ap);
-				separator = ", ";
-			}
-			j++;
+			case 'c':
+				printf("%c", va_arg(args, int));
+				break;
+			case 'i':
+				printf("%d", va_arg(args, int));
+				break;
+			case 'f':
+				printf("%f", va_arg(args, double));
+				break;
+			case 's':
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(nil)";
+				printf("%s", str);
+				break;
+			default:
+				break;
 		}
+
 		i++;
 	}
+
+	va_end(args);
+
 	printf("\n");
-	va_end(ap);
 }
+
