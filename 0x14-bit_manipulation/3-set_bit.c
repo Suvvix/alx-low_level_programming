@@ -7,7 +7,7 @@
  *
  * Return: 1 if succesfful, -1 on error
  */
-int set_bit(unsigned long int *n, unsigned int index);
+int set_bit(unsigned long int *n, unsigned int index)
 {
 	if (index >= sizeof(n) * 8)
 		return (-1);
